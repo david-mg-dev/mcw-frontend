@@ -14,3 +14,10 @@ export interface IWallet {
     amount: number,
     crypto: ICrypto
 }
+
+export interface IBuy {
+    wallet_id: string,
+    user_id: string,
+    crypto_id: string,
+    amount: number
+}
