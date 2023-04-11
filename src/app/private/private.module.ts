@@ -6,6 +6,9 @@ import { PrivatePagesComponent } from './private-pages/private-pages.component';
 import { PanelCryptoComponent } from './dashboard/components/panel-crypto/panel-crypto.component';
 import { CardBuyComponent } from './dashboard/components/card-buy/card-buy.component';
 import { CardSellComponent } from './dashboard/components/card-sell/card-sell.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -17,7 +20,15 @@ import { CardSellComponent } from './dashboard/components/card-sell/card-sell.co
   ],
   imports: [
     CommonModule,
-    PrivateRoutingModule
+    PrivateRoutingModule,
+    MatTableModule,
+    MatCardModule,
+    MatIconModule
+  ],
+  exports: [
+    MatTableModule,
+    MatCardModule,
+    MatIconModule
   ]
 })
 export class PrivateModule { }
