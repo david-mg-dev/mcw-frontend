@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { IBuy, IWallet } from '../../types/crypto.types';
 import { MatTableDataSource } from '@angular/material/table';
 import { WalletService } from '../../services/wallet.service';
-import jwt_decode from 'jwt-decode';
 import { MatDialog } from '@angular/material/dialog';
 import { CardBuyComponent } from '../card-buy/card-buy.component';
+import { CardSellComponent } from '../card-sell/card-sell.component';
+import jwt_decode from 'jwt-decode';
 
 const CRYPTO_DATA: IWallet[] = []
 
@@ -44,15 +45,13 @@ export class PanelCryptoComponent implements OnInit {
   }
 
   buyCryptos(element: any) {
-
     const dialogRef = this.dialog.open(CardBuyComponent, {
       width: '250px'
     })
-
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
         const cryptoId: string = element.crypto.crypto_id
-        const amount: number = result.amount // TODO  Añadir cantidad desde un dialog
+        const amount: number = result.amount
     
         let dataBuy: IBuy = {
           wallet_id: '',
@@ -67,38 +66,29 @@ export class PanelCryptoComponent implements OnInit {
         })
       }
     })
-/*
-    const cryptoId: string = element.crypto.crypto_id
-    const amount: number = 2 // TODO  Añadir cantidad desde un dialog
-
-    let dataBuy: IBuy = {
-      wallet_id: '',
-      user_id: this.userId,
-      crypto_id: cryptoId,
-      amount: amount
-    }
-    console.log(dataBuy)
-
-    this.walletService.buyCrypto(dataBuy).subscribe(res => {
-      return res
-    })
-    */
   }
 
   sellCryptos(element: any) {
-    const cryptoId: string = element.crypto.crypto_id
-    const amount: number = 2 // TODO Añadir cantidad desde un dialog
-
-    let dataSell: IBuy = {
-      wallet_id: '',
-      user_id: this.userId,
-      crypto_id: cryptoId,
-      amount: amount
-    }
-    console.log(dataSell)
-
-    this.walletService.sellCrypto(dataSell).subscribe(res => {
-      return res
+    const dialogRef = this.dialog.open(CardSellComponent, {
+      width: '250px'
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        const cryptoId: string = element.crypto.crypto_id
+        const amount: number = result.amount 
+    
+        let dataSell: IBuy = {
+          wallet_id: '',
+          user_id: this.userId,
+          crypto_id: cryptoId,
+          amount: amount
+        }
+        console.log(dataSell)
+    
+        this.walletService.sellCrypto(dataSell).subscribe(res => {
+          return res
+        })
+      }
     })
   }
 }

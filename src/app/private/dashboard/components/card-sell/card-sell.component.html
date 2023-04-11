@@ -1,1 +1,12 @@
-<p>card-sell works!</p>
+<mat-dialog-content>
+    <div class="dialog-sell">
+       <h2 mat-dialog-title>VENTA</h2> 
+        <form (ngSubmit)="sell()">
+            <mat-label>Indica una cantidad</mat-label>
+            <input type="number" name="amount" [(ngModel)]="amount">
+            <mat-dialog-actions>
+                <button type="submit">SELL</button>
+            </mat-dialog-actions>
+        </form>
+    </div>
+</mat-dialog-content>
