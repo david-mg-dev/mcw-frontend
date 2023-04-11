@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesComponent } from '../pages/pages.component';
-import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -10,7 +9,6 @@ import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     PagesComponent,
-    RegisterComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +19,6 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule // TODO*/
   ],
   exports: [
-    //LoginComponent
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
