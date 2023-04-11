@@ -18,4 +18,8 @@ export class WalletService {
   buyCrypto(dataBuy: IBuy): Observable<any> {
     return this.http.post<IBuy>('http://localhost:5000/api/wallet/buy', dataBuy)
   }
+
+  sellCrypto(dataSell: IBuy): Observable<any> {
+    return this.http.post<IBuy>('http://localhost:5000/api/wallet/sell', dataSell)
+  }
 }

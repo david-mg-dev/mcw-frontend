@@ -49,7 +49,7 @@ export class PanelCryptoComponent implements OnInit {
       wallet_id: '',
       user_id: this.userId,
       crypto_id: cryptoId,
-      amount: amount,
+      amount: amount
     }
     console.log(dataBuy)
 
@@ -59,6 +59,19 @@ export class PanelCryptoComponent implements OnInit {
   }
 
   sellCryptos(element: any) {
+    const cryptoId: string = element.crypto.crypto_id
+    const amount: number = 2 // TODO Añadir cantidad desde un dialog
 
+    let dataSell: IBuy = {
+      wallet_id: '',
+      user_id: this.userId,
+      crypto_id: cryptoId,
+      amount: amount
+    }
+    console.log(dataSell)
+
+    this.walletService.sellCrypto(dataSell).subscribe(res => {
+      return res
+    })
   }
 }
