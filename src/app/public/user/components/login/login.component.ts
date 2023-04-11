@@ -31,12 +31,16 @@ export class LoginComponent implements OnInit {
       }
       this.authService.loginUser(this.dataAuth).subscribe(
       token => {
-        sessionStorage.setItem('token', token)
-        this.router.navigate([]) // TODO
+        if(token === null) {
+          console.log('token null') // TODO
+        } else {
+          sessionStorage.setItem('token', token)
+          this.router.navigate(['/private/dashboard'])
+        }
       },
       err => {
         this.errorLogin = err.error.message
-        console.log(this.errorLogin)
+        console.log(this.errorLogin) // TODO
       })
     }
   }
