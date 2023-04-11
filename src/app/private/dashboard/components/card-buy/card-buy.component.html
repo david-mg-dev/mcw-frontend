@@ -1,1 +1,12 @@
-<p>card-buy works!</p>
+<mat-dialog-content>
+    <div class="dialog-buy">
+       <h2 mat-dialog-title>COMPRA</h2> 
+        <form (ngSubmit)="buy()">
+            <mat-label>Indica una cantidad</mat-label>
+            <input type="number" name="amount" [(ngModel)]="amount">
+            <mat-dialog-actions>
+                <button type="submit">BUY</button>
+            </mat-dialog-actions>
+        </form>
+    </div>
+</mat-dialog-content>

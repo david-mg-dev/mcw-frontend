@@ -3,6 +3,8 @@ import { IBuy, IWallet } from '../../types/crypto.types';
 import { MatTableDataSource } from '@angular/material/table';
 import { WalletService } from '../../services/wallet.service';
 import jwt_decode from 'jwt-decode';
+import { MatDialog } from '@angular/material/dialog';
+import { CardBuyComponent } from '../card-buy/card-buy.component';
 
 const CRYPTO_DATA: IWallet[] = []
 
@@ -17,7 +19,7 @@ export class PanelCryptoComponent implements OnInit {
   userId: string = this.getDecodeToken().user_id
   cryptoList: any[] = []
 
-  constructor(private walletService: WalletService) { }
+  constructor(private walletService: WalletService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadCryptoUser()
@@ -42,6 +44,30 @@ export class PanelCryptoComponent implements OnInit {
   }
 
   buyCryptos(element: any) {
+
+    const dialogRef = this.dialog.open(CardBuyComponent, {
+      width: '250px'
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        const cryptoId: string = element.crypto.crypto_id
+        const amount: number = result.amount // TODO  Añadir cantidad desde un dialog
+    
+        let dataBuy: IBuy = {
+          wallet_id: '',
+          user_id: this.userId,
+          crypto_id: cryptoId,
+          amount: amount
+        }
+        console.log(dataBuy)
+    
+        this.walletService.buyCrypto(dataBuy).subscribe(res => {
+          return res
+        })
+      }
+    })
+/*
     const cryptoId: string = element.crypto.crypto_id
     const amount: number = 2 // TODO  Añadir cantidad desde un dialog
 
@@ -56,6 +82,7 @@ export class PanelCryptoComponent implements OnInit {
     this.walletService.buyCrypto(dataBuy).subscribe(res => {
       return res
     })
+    */
   }
 
   sellCryptos(element: any) {

@@ -9,6 +9,9 @@ import { CardSellComponent } from './dashboard/components/card-sell/card-sell.co
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms'; 
 
 
 @NgModule({
@@ -23,12 +26,18 @@ import { MatIconModule } from '@angular/material/icon';
     PrivateRoutingModule,
     MatTableModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   exports: [
     MatTableModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule
   ]
 })
 export class PrivateModule { }
