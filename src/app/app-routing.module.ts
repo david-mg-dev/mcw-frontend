@@ -4,7 +4,8 @@ import { PublicRoutingModule } from './public/public-routing.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' }, // TODO
-  { path: 'public', loadChildren:()=>import('./public/public.module').then(m=>m.PublicModule)}
+  { path: 'public', loadChildren:()=>import('./public/public.module').then(m=>m.PublicModule)},
+  { path: 'private', loadChildren:()=>import('./private/private.module').then(m=>m.PrivateModule)}
 ];
 
 @NgModule({
