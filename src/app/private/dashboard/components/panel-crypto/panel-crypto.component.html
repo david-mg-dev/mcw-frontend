@@ -4,7 +4,9 @@
         <table mat-table [dataSource]="dataSourceCrypto" class="mat-elevation-z6 table-cryptos">
             <ng-container matColumnDef="icon">
                 <th mat-header-cell *matHeaderCellDef> Icon </th>
-                <td mat-cell *matCellDef="let element"> {{element.crypto.icon}} </td>
+                <td mat-cell *matCellDef="let element"> 
+                    <img [src]="element.crypto.icon" alt="" class="crypto-logo">
+                </td>
             </ng-container>
        
             <ng-container matColumnDef="asset">
