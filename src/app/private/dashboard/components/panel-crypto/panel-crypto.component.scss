@@ -3,83 +3,52 @@
     background-color: #F4E6CB;
 }
 
-/*
-.table-cryptos {
-    width: 70%;
-    margin-left: 10%;
-}
-
-.button-buy {
-    background-color: red;
-    border: none;
-    width: 80%;
-    height: 32px;
-}
-
-.button-shell {
-    background-color: green;
-    border: none;
-    width: 80%;
-    height: 32px;
-}
-
-.crypto-logo {
-    width: 54px;
-    margin: 12px 0px;
-}
-*/
-
-/* Estilos para la tabla */
 .table-cryptos {
     width: 100%;
     font-size: 16px;
   }
   
-  /* Estilos para las celdas de la tabla */
-  .mat-cell, .mat-header-cell {
+.mat-cell, .mat-header-cell {
     text-align: center;
     padding: 12px 0;
-  }
+}
   
-  /* Estilos para el título de la tabla */
-  .mat-card-title {
-    font-size: 24px;
-    //font-weight: bold;
-    text-align: center;
-    padding: 16px;
-    color: #a47e30;
-  }
+.mat-card-title {
+  font-size: 24px;
+  text-align: center;
+  padding: 16px;
+  color: #a47e30;
+}
   
-  /* Estilos para el botón de comprar */
-  .button-buy {
-    background-color: #4CAF50; /* verde */
-    color: white;
-    width: 80%;
-    height: 32px;
-    border-radius: 6px;
-    border-style: none;
-  }
+.button-buy {
+  background-color: #4CAF50;
+  color: #291c1c;
+  width: 80%;
+  height: 32px;
+  border-radius: 6px;
+  border-style: none;
+  cursor: pointer;
+}
+
+.button-buy:hover {
+  background-color: #3E8E41;
+}
   
-  .button-buy:hover {
-    background-color: #3E8E41; /* verde oscuro */
-  }
+.button-shell {
+  background-color: #f44336; 
+  color: #291c1c;
+  width: 80%;
+  height: 32px;
+  border-radius: 6px;
+  border-style: none;
+  cursor: pointer;
+}
   
-  /* Estilos para el botón de vender */
-  .button-shell {
-    background-color: #f44336; /* rojo */
-    color: white;
-    width: 80%;
-    height: 32px;
-    border-radius: 6px;
-    border-style: none;
-  }
-  
-  .button-shell:hover {
-    background-color: #c62828; /* rojo oscuro */
-  }
-  
-  /* Estilos para la imagen de la criptomoneda */
-  .crypto-logo {
-    max-width: 40px;
-    max-height: 40px;
-  }
+.button-shell:hover {
+  background-color: #c62828;
+}
+
+.crypto-logo {
+  max-width: 40px;
+  max-height: 40px;
+}
