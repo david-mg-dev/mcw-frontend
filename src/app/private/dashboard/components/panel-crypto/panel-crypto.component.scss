@@ -1,6 +1,6 @@
 
 .container {
-    background-color: #F4E6CB;
+    background-color: #DEEDF2;
 }
 
 .table-cryptos {
@@ -19,9 +19,9 @@
   padding: 16px;
 }
   
-.button-buy {
-  background-color: #4CAF50;
-  color: #291c1c;
+.button-buy { 
+  background-color: #129961;
+  color: #e4ece4;
   width: 80%;
   height: 32px;
   border-radius: 6px;
@@ -30,12 +30,12 @@
 }
 
 .button-buy:hover {
-  background-color: #3E8E41;
+  background-color:  #4CAF50;
 }
   
-.button-shell {
-  background-color: #f44336; 
-  color: #291c1c;
+.button-shell { 
+  background-color: #EC0000; 
+  color: #e4ece4;
   width: 80%;
   height: 32px;
   border-radius: 6px;
@@ -44,7 +44,7 @@
 }
   
 .button-shell:hover {
-  background-color: #c62828;
+  background-color: #ff5555;
 }
 
 .crypto-logo {

@@ -1,18 +1,14 @@
 <mat-card class="container">
-    <mat-card-content></mat-card-content>
-    <mat-card-actions align="end">
-        <!--button type="button" mat-button (click)="toDashboard()">
-             <mat-icon>home</mat-icon>
-        </!--button-->
+    <mat-card-actions class="header">
+        <img src="../../../../../assets/logo4.png" alt="" class="logo">
         <button mat-button [matMenuTriggerFor]="account">
             <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #account ="matMenu" class="mat-menu">
-            <!--button mat-menu-item (click)="toCart()"> Mis Pedidos</!--button-->
-            <button mat-menu-item (click)="logout()"> Cerrar Sesión</button>
+                <button mat-menu-item (click)="logout()">Logout</button>
         </mat-menu>
     </mat-card-actions>
 </mat-card>
-<mat-card></mat-card>
+
 
 
