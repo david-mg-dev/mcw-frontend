@@ -8,6 +8,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class CardBuyComponent implements OnInit {
   amount: number
+  loadingBuy = false
 
   constructor(public dialogRef: MatDialogRef<CardBuyComponent>) { }
 
@@ -15,7 +16,9 @@ export class CardBuyComponent implements OnInit {
   }
 
   buy(): void {
-    this.dialogRef.close({ amount: this.amount })
+    this.loadingBuy = true
+    setTimeout(() => {
+      this.dialogRef.close({ amount: this.amount })
+    }, 2000)
   }
-
-}
+} 

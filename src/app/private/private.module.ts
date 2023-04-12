@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms'; 
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -34,7 +35,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDialogModule,
     MatFormFieldModule,
     FormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatTableModule,
@@ -43,7 +45,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDialogModule,
     MatFormFieldModule,
     FormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
   ]
 })
 export class PrivateModule { }
