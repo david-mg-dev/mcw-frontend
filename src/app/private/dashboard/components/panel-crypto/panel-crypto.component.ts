@@ -62,6 +62,7 @@ export class PanelCryptoComponent implements OnInit {
         console.log(dataBuy)
     
         this.walletService.buyCrypto(dataBuy).subscribe(res => {
+          location.reload()
           return res
         })
       }
@@ -86,6 +87,7 @@ export class PanelCryptoComponent implements OnInit {
         console.log(dataSell)
     
         this.walletService.sellCrypto(dataSell).subscribe(res => {
+          location.reload()
           return res
         })
       }

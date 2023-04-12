@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PrivatePagesComponent } from '../private-pages/private-pages.component';
+//import { PrivatePagesComponent } from '../private-pages/private-pages.component';
 //import { HeaderDashboardComponent } from './components/header-dashboard/header-dashboard.component';
 //import { MatTableModule } from '@angular/material/table';
 //import { MatCardModule } from '@angular/material/card';
@@ -11,7 +11,7 @@ import { PrivatePagesComponent } from '../private-pages/private-pages.component'
 
 @NgModule({
   declarations: [
-    PrivatePagesComponent,
+    //PrivatePagesComponent,
     //HeaderDashboardComponent,
   ],
   imports: [
