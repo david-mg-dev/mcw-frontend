@@ -19,6 +19,7 @@ export class PanelCryptoComponent implements OnInit {
   dataSourceCrypto = new MatTableDataSource(CRYPTO_DATA)
   userId: string = this.getDecodeToken().user_id
   cryptoList: any[] = []
+  errorBuy = ''
 
   constructor(private walletService: WalletService, public dialog: MatDialog) { }
 
@@ -48,24 +49,32 @@ export class PanelCryptoComponent implements OnInit {
     const dialogRef = this.dialog.open(CardBuyComponent, {
       width: '250px'
     })
-    dialogRef.afterClosed().subscribe(result => {
-      if(result) {
-        const cryptoId: string = element.crypto.crypto_id
-        const amount: number = result.amount
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if(result) {
+          const cryptoId: string = element.crypto.crypto_id
+          const amount: number = result.amount
     
-        let dataBuy: IBuy = {
-          wallet_id: '',
-          user_id: this.userId,
-          crypto_id: cryptoId,
-          amount: amount
+          let dataBuy: IBuy = {
+            wallet_id: '',
+            user_id: this.userId,
+            crypto_id: cryptoId,
+            amount: amount
+          }
+    
+          this.walletService.buyCrypto(dataBuy).subscribe(
+            res => {
+              location.reload()
+              return res
+            },
+            err => {
+              this.errorBuy = err.error.message
+              alert('Error en la transaccion')
+            })
         }
-        console.log(dataBuy)
-    
-        this.walletService.buyCrypto(dataBuy).subscribe(res => {
-          location.reload()
-          return res
-        })
-      }
+    },
+    err => {
+      this.errorBuy = err.error.message
     })
   }
 
@@ -86,10 +95,14 @@ export class PanelCryptoComponent implements OnInit {
         }
         console.log(dataSell)
     
-        this.walletService.sellCrypto(dataSell).subscribe(res => {
-          location.reload()
-          return res
-        })
+        this.walletService.sellCrypto(dataSell).subscribe(
+          res => {
+            location.reload()
+            return res
+          },
+          err => {
+            this.errorBuy = err.error.message
+          })
       }
     })
   }
