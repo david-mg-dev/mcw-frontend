@@ -6,12 +6,15 @@ import { PrivatePagesComponent } from './private-pages/private-pages.component';
 import { PanelCryptoComponent } from './dashboard/components/panel-crypto/panel-crypto.component';
 import { CardBuyComponent } from './dashboard/components/card-buy/card-buy.component';
 import { CardSellComponent } from './dashboard/components/card-sell/card-sell.component';
+import { HeaderDashboardComponent } from './dashboard/components/header-dashboard/header-dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms'; 
+import { MatMenuModule } from '@angular/material/menu';
+
 
 
 @NgModule({
@@ -19,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     PrivatePagesComponent,
     PanelCryptoComponent,
     CardBuyComponent,
-    CardSellComponent
+    CardSellComponent,
+    HeaderDashboardComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatDialogModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule
   ],
   exports: [
     MatTableModule,
@@ -37,7 +42,8 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatDialogModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule
   ]
 })
 export class PrivateModule { }
