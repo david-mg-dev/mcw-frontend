@@ -45,3 +45,17 @@ p {
   color: red;
   margin-top: 10px;
 }
+
+.register-link {
+  margin-top: 18px;
+}
+
+.register-link a{
+  color: #0e6cd1;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
