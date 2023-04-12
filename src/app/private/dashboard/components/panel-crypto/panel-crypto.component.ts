@@ -47,7 +47,7 @@ export class PanelCryptoComponent implements OnInit {
 
   buyCryptos(element: any) {
     const dialogRef = this.dialog.open(CardBuyComponent, {
-      width: '250px'
+      width: '400px'
     })
     dialogRef.afterClosed().subscribe(
       result => {
@@ -80,7 +80,7 @@ export class PanelCryptoComponent implements OnInit {
 
   sellCryptos(element: any) {
     const dialogRef = this.dialog.open(CardSellComponent, {
-      width: '250px'
+      width: '400px'
     })
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
