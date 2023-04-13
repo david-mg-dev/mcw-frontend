@@ -15,7 +15,7 @@ const CRYPTO_DATA: IWallet[] = []
   styleUrls: ['./panel-crypto.component.scss']
 })
 export class PanelCryptoComponent implements OnInit {
-  displayedColumns: string[] = ['icon', 'name', 'asset', 'value', 'stock', 'buy', 'sell', 'amount',]
+  displayedColumns: string[] = ['icon', 'name', 'asset', 'value', 'stock', 'buy', 'sell', 'amount', 'EUR']
   dataSourceCrypto = new MatTableDataSource(CRYPTO_DATA)
   userId: string = this.getDecodeToken().user_id
   cryptoList: any[] = []
