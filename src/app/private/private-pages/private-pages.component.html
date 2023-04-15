@@ -1,6 +1,6 @@
 <app-header-dashboard></app-header-dashboard>
 
-<mat-card><p>SALDO:  {{userData?.deposit}}  €</p></mat-card>
+<mat-card><p>SALDO:  {{userData?.deposit | number: '.2-2'}}  €</p></mat-card>
 
 <router-outlet></router-outlet>
 

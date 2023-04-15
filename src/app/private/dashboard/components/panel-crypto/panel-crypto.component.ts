@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { IBuy, IWallet } from '../../types/crypto.types';
 import { MatTableDataSource } from '@angular/material/table';
 import { WalletService } from '../../services/wallet.service';
@@ -14,16 +14,17 @@ const CRYPTO_DATA: IWallet[] = []
   templateUrl: './panel-crypto.component.html',
   styleUrls: ['./panel-crypto.component.scss']
 })
-export class PanelCryptoComponent implements OnInit {
+export class PanelCryptoComponent implements AfterViewInit {
   displayedColumns: string[] = ['icon', 'name', 'asset', 'value', 'stock', 'buy', 'sell', 'amount', 'EUR']
-  dataSourceCrypto = new MatTableDataSource(CRYPTO_DATA)
+  dataSourceCrypto = new MatTableDataSource(CRYPTO_DATA) 
   userId: string = this.getDecodeToken().user_id
   cryptoList: any[] = []
   errorBuy = ''
+  filterValue = '';
 
   constructor(private walletService: WalletService, public dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.loadCryptoUser()
   }
 
@@ -45,6 +46,17 @@ export class PanelCryptoComponent implements OnInit {
     })
   }
 
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value
+
+    this.dataSourceCrypto.filterPredicate = function (record, filter) {
+      return record.crypto.name.toLocaleLowerCase() == filter.toLocaleLowerCase();
+    }
+
+    this.dataSourceCrypto.filter = filterValue.trim().toLowerCase();
+  }
+  
   buyCryptos(element: any) {
     const dialogRef = this.dialog.open(CardBuyComponent, {
       width: '400px'
@@ -69,7 +81,7 @@ export class PanelCryptoComponent implements OnInit {
             },
             err => {
               this.errorBuy = err.error.message
-              alert('Error en la transaccion')
+              alert(this.errorBuy) // TODO
             })
         }
     },
@@ -102,6 +114,7 @@ export class PanelCryptoComponent implements OnInit {
           },
           err => {
             this.errorBuy = err.error.message
+            alert(this.errorBuy)  //TODO
           })
       }
     })
