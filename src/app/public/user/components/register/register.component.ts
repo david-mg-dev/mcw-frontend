@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/share/componentes/error-dialog/error-dialog.component';
+import { SuccesDialogComponent } from 'src/app/share/componentes/succes-dialog/succes-dialog.component';
 
 
 @Component({
@@ -40,6 +41,9 @@ export class RegisterComponent implements OnInit {
       }
       this.authService.signUpUser(this.dataRegister).subscribe(
         data => {
+          this.dialog.open(SuccesDialogComponent, {
+            data: { message: 'Usuario Registrado Con Exito' }
+          })
           this.router.navigate(['/public/login'])
           return data
         },

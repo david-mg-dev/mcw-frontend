@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { CardBuyComponent } from '../card-buy/card-buy.component';
 import { CardSellComponent } from '../card-sell/card-sell.component';
 import jwt_decode from 'jwt-decode';
+import { ErrorDialogComponent } from 'src/app/share/componentes/error-dialog/error-dialog.component';
+import { SuccesDialogComponent } from 'src/app/share/componentes/succes-dialog/succes-dialog.component';
 
 const CRYPTO_DATA: IWallet[] = []
 
@@ -59,7 +61,8 @@ export class PanelCryptoComponent implements AfterViewInit {
   
   buyCryptos(element: any) {
     const dialogRef = this.dialog.open(CardBuyComponent, {
-      width: '400px'
+      width: '400px',
+      data: { errorBuy: this.errorBuy }
     })
     dialogRef.afterClosed().subscribe(
       result => {
@@ -76,12 +79,18 @@ export class PanelCryptoComponent implements AfterViewInit {
     
           this.walletService.buyCrypto(dataBuy).subscribe(
             res => {
-              location.reload()
+              this.dialog.open(SuccesDialogComponent, {
+                data: { message: 'Compra Realizada Con Exito' }
+              })
               return res
             },
             err => {
               this.errorBuy = err.error.message
-              alert(this.errorBuy) // TODO
+              this.dialog.open(ErrorDialogComponent, {
+                data: { message: this.errorBuy }
+              }).afterClosed().subscribe(() => {
+                this.buyCryptos(element); // TODO
+              });
             })
         }
     },
@@ -109,12 +118,16 @@ export class PanelCryptoComponent implements AfterViewInit {
     
         this.walletService.sellCrypto(dataSell).subscribe(
           res => {
-            location.reload()
+            this.dialog.open(SuccesDialogComponent, {
+              data: { message: 'Venta Realizada Con Exito' }
+            })
             return res
           },
           err => {
             this.errorBuy = err.error.message
-            alert(this.errorBuy)  //TODO
+            this.dialog.open(ErrorDialogComponent, {
+              data: { message: this.errorBuy }
+            })
           })
       }
     })
