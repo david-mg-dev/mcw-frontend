@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class CardBuyComponent implements OnInit {
   amount: number
   loadingBuy = false
-
+ 
   constructor(public dialogRef: MatDialogRef<CardBuyComponent>) { }
 
   ngOnInit(): void {
