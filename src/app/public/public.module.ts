@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './user/components/login/login.component';
 import { RegisterComponent } from './user/components/register/register.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -22,14 +23,16 @@ import { RegisterComponent } from './user/components/register/register.component
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   exports: [
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ]
 
 })

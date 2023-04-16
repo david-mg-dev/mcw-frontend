@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IUser } from '../../types/user.types';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from 'src/app/share/componentes/error-dialog/error-dialog.component';
+
 
 @Component({
   selector: 'app-register',
@@ -12,8 +15,9 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup
   dataRegister: IUser = {} as IUser
+  errorRegister: ''
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -21,7 +25,7 @@ export class RegisterComponent implements OnInit {
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])], // TODO
       fullname: ['', Validators.compose([Validators.required])],
-      deposit: [0, Validators.compose([Validators.required, Validators.pattern('[0-1]*')])]
+      deposit: [0, Validators.compose([Validators.required])]
     })
   }
 
@@ -40,7 +44,10 @@ export class RegisterComponent implements OnInit {
           return data
         },
         err => {
-          return err
+          this.errorRegister = err.error.message
+          this.dialog.open(ErrorDialogComponent, {
+            data: { message: this.errorRegister }
+          })
         }
       )
     }
