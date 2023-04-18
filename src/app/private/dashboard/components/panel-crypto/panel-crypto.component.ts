@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { IBuy, IWallet } from '../../types/crypto.types';
 import { MatTableDataSource } from '@angular/material/table';
 import { WalletService } from '../../services/wallet.service';
@@ -8,6 +8,10 @@ import { CardSellComponent } from '../card-sell/card-sell.component';
 import jwt_decode from 'jwt-decode';
 import { ErrorDialogComponent } from 'src/app/share/componentes/error-dialog/error-dialog.component';
 import { SuccesDialogComponent } from 'src/app/share/componentes/succes-dialog/succes-dialog.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { IUser } from 'src/app/public/user/types/user.types';
+import { UserService } from '../../services/user.service';
 
 const CRYPTO_DATA: IWallet[] = []
 
@@ -17,17 +21,26 @@ const CRYPTO_DATA: IWallet[] = []
   styleUrls: ['./panel-crypto.component.scss']
 })
 export class PanelCryptoComponent implements AfterViewInit {
+  //@Input() userData: IUser | undefined;
   displayedColumns: string[] = ['icon', 'name', 'asset', 'value', 'stock', 'buy', 'sell', 'amount', 'EUR']
   dataSourceCrypto = new MatTableDataSource(CRYPTO_DATA) 
   userId: string = this.getDecodeToken().user_id
+  userData: IUser 
   cryptoList: any[] = []
   errorBuy = ''
   filterValue = '';
+  
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private walletService: WalletService, public dialog: MatDialog) { }
+  constructor(private walletService: WalletService, public dialog: MatDialog, private userService: UserService) { }
 
   ngAfterViewInit(): void {
+    this.loadUser()
+    console.log(this.userData)
     this.loadCryptoUser()
+    this.dataSourceCrypto.paginator = this.paginator 
+    this.dataSourceCrypto.sort = this.sort;
   }
 
   getDecodeToken(): any { // TODO Implementar en servicio
@@ -48,6 +61,12 @@ export class PanelCryptoComponent implements AfterViewInit {
     })
   }
 
+  loadUser() {
+    this.userService.getUser(this.userId).subscribe((res) => {
+      this.userData = res
+      console.log(this.userData)
+    })
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value
@@ -57,12 +76,16 @@ export class PanelCryptoComponent implements AfterViewInit {
     }
 
     this.dataSourceCrypto.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSourceCrypto.paginator) {
+      this.dataSourceCrypto.paginator.firstPage();
+    }
   }
   
   buyCryptos(element: any) {
     const dialogRef = this.dialog.open(CardBuyComponent, {
       width: '400px',
-      data: { errorBuy: this.errorBuy }
+      data: { errorBuy: this.errorBuy, userDeposit: this.userData.deposit }
     })
     dialogRef.afterClosed().subscribe(
       result => {
