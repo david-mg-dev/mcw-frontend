@@ -15,6 +15,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms'; 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { PanelListComponent } from './dashboard/components/panel-list/panel-list.component';
+
 
 
 
@@ -24,7 +28,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     PanelCryptoComponent,
     CardBuyComponent,
     CardSellComponent,
-    HeaderDashboardComponent
+    HeaderDashboardComponent,
+    PanelListComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +41,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     FormsModule,
     MatMenuModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatSortModule
+    
   ],
   exports: [
     MatTableModule,
@@ -46,7 +54,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     FormsModule,
     MatMenuModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class PrivateModule { }
