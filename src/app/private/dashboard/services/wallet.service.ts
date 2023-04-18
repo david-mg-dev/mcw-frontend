@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
-import { IBuy, IWallet } from '../types/crypto.types';
+import { IBuy, ICrypto, IWallet } from '../types/crypto.types';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,10 @@ export class WalletService {
 
   getCryptosUser(id: string): Observable<IWallet[]> {
     return this.http.get<IWallet[]>(`http://localhost:5000/api/wallet/all/${id}`)
+  }
+
+  addCryptoWallet(dataCrypto: any): Observable<any> {
+    return this.http.post<any>('http://localhost:5000/api/wallet/add', dataCrypto)
   }
 
   buyCrypto(dataBuy: IBuy): Observable<any> {
