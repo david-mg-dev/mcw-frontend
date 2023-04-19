@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-card-buy',
@@ -10,9 +11,14 @@ export class CardBuyComponent implements OnInit {
   amount: number
   loadingBuy = false
  
-  constructor(public dialogRef: MatDialogRef<CardBuyComponent>) { }
+  constructor(public dialogRef: MatDialogRef<CardBuyComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
+  }
+
+  maxAmount() {
+    this.amount = this.data.userDeposit
+    this.amount = +this.amount.toFixed(4)
   }
 
   buy(): void {
@@ -20,5 +26,9 @@ export class CardBuyComponent implements OnInit {
     setTimeout(() => {
       this.dialogRef.close({ amount: this.amount })
     }, 2000)
+  }
+
+  close() {
+    this.dialogRef.close()
   }
 } 

@@ -1,17 +1,31 @@
 .mat-dialog-content {
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-  }
- 
+}
+
+.header-dialog {
+    display: flex;
+    flex-direction: row;
+    margin-left: 12%;
+}
+
+.close-button {
+    background-color: transparent;
+    color: #EC0000;
+    border: none;
+    margin-left: 80%;
+    margin-top: -20%;
+    cursor: pointer;
+}
+
 .dialog-buy {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 20px;
-  }
+}
   
 .dialog-buy h2 {
     font-size: 24px;
@@ -23,7 +37,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     margin-top: 20px;
 }
   
@@ -32,7 +45,7 @@
     font-weight: bold;
     margin-bottom: 10px;
 }
-  
+
 .dialog-buy input {
     width: 200px;
     height: 40px;
@@ -42,8 +55,8 @@
     font-size: 16px;
     margin-bottom: 20px;
 }
-  
-.dialog-buy button[type="submit"] {
+  /*
+.dialog-buy button {
     width: 200px;
     height: 40px;
     background-color: #007bff;
@@ -54,6 +67,53 @@
     cursor: pointer;
 }
   
-.dialog-buy button[type="submit"]:hover {
+.dialog-buy button:hover {
     background-color: #0056b3;
 }
+*/
+
+.mat-icon-button {
+    width: 200px;
+    height: 40px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.mat-icon-button:hover {
+    background-color: #0056b3;
+}
+
+.mat-spinner {
+    left: 40%;
+}
+
+.user-deposit {
+    margin-left: 40%;
+    font-size: 16px;
+    font-weight:400;
+    margin-bottom: 10px;
+    color: #073a70f7;
+}
+
+.user-deposit span {
+    margin-right: 15px;
+}
+
+.button-input {
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+}
+
+.button-max-amount{
+    margin-left: 20px;
+    background-color: transparent;
+    color: #d22a21;
+    border: none;
+    cursor: pointer;
+}
+

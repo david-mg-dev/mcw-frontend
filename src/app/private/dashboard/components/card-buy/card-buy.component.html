@@ -1,15 +1,32 @@
 <mat-dialog-content>
-    <div class="dialog-buy">
-       <h2 mat-dialog-title>COMPRA</h2> 
-        <form (ngSubmit)="buy()">
-            <mat-label>Indica una cantidad</mat-label>
-            <input type="number" name="amount" [(ngModel)]="amount">
-            <mat-dialog-actions>
-                <button type="submit">BUY</button>
-            </mat-dialog-actions>
-        </form>
+    <div class="header-dialog">
+        <h2 mat-dialog-title>COMPRA</h2> 
+        <button mat-icon-button class="close-button" (click)="close()">
+            <mat-icon>close</mat-icon>
+        </button>
     </div>
-    <mat-spinner *ngIf="loadingBuy"></mat-spinner>
+    <div class="dialog-buy">
+        <div>
+            <p class="user-deposit"><span>DEPOSIT:</span>{{data.userDeposit | number: '1.2-2'}} €</p>
+            <form (ngSubmit)="buy()">
+                <mat-label>Indica una cantidad</mat-label>
+                <div class="button-input">
+                    <input matInput type="number" name="amount"  [(ngModel)]="amount">
+                    <button type="button" mat-icon-buton class="button-max-amount" (click)="maxAmount()">
+                        MAX
+                    </button>
+                </div>
+                <div class="mat-dialog-actions">
+                    <button type="submit" [disabled]="loadingBuy" class="mat-icon-button" >
+                        <mat-spinner *ngIf="loadingBuy" [diameter]="35" class="mat-spinner"></mat-spinner>
+                        <span *ngIf="!loadingBuy" class="mat-button-wrapper">BUY</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </mat-dialog-content>
+
+
 
 

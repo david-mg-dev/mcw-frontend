@@ -1,13 +1,28 @@
 <mat-dialog-content>
+    <div class="header-dialog">
+        <h2 mat-dialog-title>COMPRA</h2> 
+        <button mat-icon-button class="close-button" (click)="close()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
     <div class="dialog-sell">
-       <h2 mat-dialog-title>VENTA</h2> 
+       <p class="user-amount"><span>AMOUNT:</span>{{data.amountCrypto | number: '1.2-2'}} €</p>
         <form (ngSubmit)="sell()">
             <mat-label>Indica una cantidad</mat-label>
-            <input type="number" name="amount" [(ngModel)]="amount">
-            <mat-dialog-actions>
-                <button type="submit">SELL</button>
-            </mat-dialog-actions>
+            <div class="button-input">
+                <input matInput type="number" name="amount" [(ngModel)]="amount">
+                <button type="button" mat-icon-buton class="button-max-amount" (click)="maxAmount()">
+                    MAX
+                </button>
+            </div>
+            <div class="mat-dialog-actions">
+                <button type="submit" [disabled]="loadingSell" class="mat-icon-button" >
+                    <mat-spinner *ngIf="loadingSell" [diameter]="35" class="mat-spinner"></mat-spinner>
+                    <span *ngIf="!loadingSell" class="mat-button-wrapper">SELL</span>
+                </button>
+            </div>
         </form>
     </div>
-    <mat-spinner *ngIf="loadingSell"></mat-spinner>
 </mat-dialog-content>
+
+
