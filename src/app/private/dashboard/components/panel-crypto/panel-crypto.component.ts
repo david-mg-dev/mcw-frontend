@@ -124,7 +124,8 @@ export class PanelCryptoComponent implements AfterViewInit {
 
   sellCryptos(element: any) {
     const dialogRef = this.dialog.open(CardSellComponent, {
-      width: '400px'
+      width: '400px',
+      data: { amountCrypto: element.amount }
     })
     dialogRef.afterClosed().subscribe(result => {
       if(result) {

@@ -4,6 +4,9 @@ import { CyptoService } from '../../services/cypto.service'
 import { ICrypto } from '../../types/crypto.types';
 import { WalletService } from '../../services/wallet.service';
 import jwt_decode from 'jwt-decode';
+import { MatDialog } from '@angular/material/dialog';
+import { SuccesDialogComponent } from 'src/app/share/componentes/succes-dialog/succes-dialog.component';
+import { ErrorDialogComponent } from 'src/app/share/componentes/error-dialog/error-dialog.component';
 
 const CRYPTO_DATA: ICrypto[] = []
 
@@ -16,9 +19,9 @@ export class PanelListComponent implements OnInit {
   displayedColumns: string[] = ['icon', 'name', 'asset', 'value', 'stock', 'EUR', 'addCrypto']
   dataSourceCrypto = new MatTableDataSource(CRYPTO_DATA) 
   userId: string = this.getDecodeToken().user_id
-  //cryptoList: any[] = []
+  errorCrypto = ''
 
-  constructor(private cryptoService: CyptoService, private walletService: WalletService) { }
+  constructor(private cryptoService: CyptoService, private walletService: WalletService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadCrypto()
@@ -48,9 +51,18 @@ export class PanelListComponent implements OnInit {
       crypto_id: element.crypto_id
     }
 
-    this.walletService.addCryptoWallet(dataCrypto).subscribe((res) => {
-      return res
+    this.walletService.addCryptoWallet(dataCrypto).subscribe(
+      res => {
+        this.dialog.open(SuccesDialogComponent, {
+          data: { message: 'Add Crypto OK' }
+        })
+        return res
+    },
+    err => {
+      this.errorCrypto = err.error.message
+      this.dialog.open(ErrorDialogComponent, {
+        data: { message: this.errorCrypto }
+      })
     })
   }
-
 }
