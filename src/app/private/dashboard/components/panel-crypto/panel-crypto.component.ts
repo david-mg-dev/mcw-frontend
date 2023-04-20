@@ -85,7 +85,7 @@ export class PanelCryptoComponent implements AfterViewInit {
   buyCryptos(element: any) {
     const dialogRef = this.dialog.open(CardBuyComponent, {
       width: '400px',
-      data: { errorBuy: this.errorBuy, userDeposit: this.userData.deposit }
+      data: { errorBuy: this.errorBuy, userDeposit: this.userData.deposit, cryptoValue: element.crypto.value }
     })
     dialogRef.afterClosed().subscribe(
       result => {

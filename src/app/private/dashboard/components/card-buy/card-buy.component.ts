@@ -17,8 +17,8 @@ export class CardBuyComponent implements OnInit {
   }
 
   maxAmount() {
-    this.amount = this.data.userDeposit
-    this.amount = +this.amount.toFixed(4)
+    this.amount = (this.data.userDeposit) / this.data.cryptoValue
+    this.amount = +this.amount
   }
 
   buy(): void {
