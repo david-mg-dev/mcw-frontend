@@ -12,7 +12,7 @@
                     <input type="password" matInput formControlName="password">
                 </mat-form-field>
             </div>
-            <button type="submit" class="btn-submit">LOGIN</button>
+            <button [disabled]="!loginForm.valid" type="submit" class="btn-submit">LOGIN</button>
             <p *ngIf="errorLogin">{{ errorLogin }}</p>
         </form>
         <div class="register-link">

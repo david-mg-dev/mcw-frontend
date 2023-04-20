@@ -30,7 +30,7 @@
                 </div>
                 
             </div>
-            <button type="submit" class="btn-submit">SIGN UP</button>
+            <button type="submit" class="btn-submit" [disabled]="!registerForm.valid">SIGN UP</button>
         </form>
     </mat-card>
 </div>
